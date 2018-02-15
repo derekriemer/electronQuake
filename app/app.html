@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+  <script>window.$ = window.jQuery = require('jquery');</script>
+  <meta charset="utf-8">
+  <title>Earthquake Monitor</title>
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+  <div id="app" class="container">
+    <h1>Earthquakes List</h1>
+    <! columns row. -->
+    <div class="row" role="region" aria-label="controls">
+      <div class="col">
+        <label for="quake-time-range-select">
+          Earthquake Time Range
+        </label>
+        <select id="quake-time-range-select">
+          <option data-type="hour">Last Hour</option>
+          <option data-type="day" selected>Last Day</option>
+          <option data-type="week">Last Week</option>
+          <option data-type="month">Last Month</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="quake-magnitude-select">
+          Magnitude:
+        </label>
+        <select id="quake-magnitude-select">
+          <option data-type="significant" selected>significant Earthquakes</option>
+          <option data-type="4.5">&gt4.5</option>
+          <option data-type="2.5">&gt2.5</option>
+          <option data-type="1.0">&gt1.0</option>
+          <option data-type="all">All Earthquakes (Warning, this will bring in lots of data)</option>
+        </select>
+      </div>
+      <div class="col">
+        <button id="refresh-quakes-list">
+          Refresh Quakes List
+        </button>
+      </div>  
+    </div>
+    <! /columns row. row -->
+    <div class="row" role="region" aria-label="Quakes List">
+      <div id="quake-loading-banner" class="alert-info" role="alert">
+        Loading Earthquake Data, Please wait ...
+      </div>
+      <h2 id="quake-type-title" tabindex="-1">
+      </h2>
+      <ul id="quakeslist" style="display:none;">
+        
+      </ul>
+    </div>
+  </div>
+  <div class="modal" tabindex="-1" role="dialog" id="quake-details">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title">Details</h1>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="quake-details-body" style="display: :none;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody id="quake-details-table-body">
+                
+              </tbody>
+            </table>
+          </div>
+          <div id="quake-details-loading-alert">
+            Loading details, please wait ...
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+  
+</body>
+</html>
